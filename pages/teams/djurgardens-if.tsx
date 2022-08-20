@@ -1,5 +1,5 @@
-import { fetchPlayers } from "../lib/parser/player";
-import { Player } from "../lib/types/player";
+import { fetchPlayers } from "../../lib/parser/player";
+import { Player } from "../../lib/types/player";
 
 export default function Home({ players }: Player[]) {
   return (
@@ -14,7 +14,7 @@ export default function Home({ players }: Player[]) {
 }
 
 export async function getStaticProps() {
-  const players = await fetchPlayers('https://sv.wikipedia.org/w/api.php?action=parse&format=json&page=Malm%C3%B6_FF&section=15&prop=text');
+  const players = await fetchPlayers('https://sv.wikipedia.org/w/api.php?action=parse&format=json&page=Djurg%C3%A5rdens_IF_Fotboll&section=22&prop=text');
 
   return {
     props: { players },
