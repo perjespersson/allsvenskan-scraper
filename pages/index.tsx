@@ -1,5 +1,6 @@
 import { fetchPlayers } from "../lib/parser/player";
-import { Player } from "../lib/types/player";
+import { Player } from "types";
+
 
 export default function Home({ players }: Player[]) {
   return (
