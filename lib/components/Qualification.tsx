@@ -1,5 +1,3 @@
-import { Group } from "@mantine/core";
-
 export default function Qualification({ qualification, color }) {
   return (
     <>
