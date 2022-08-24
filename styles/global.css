@@ -4,6 +4,51 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
   background-color: #fafafa;
+}
+
+.no-border {
+  border-bottom: none !important;
+}
+
+.center {
+  text-align: center !important;
+}
+
+tbody tr:nth-child(14) {
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+tbody tr:nth-child(3) {
+  border-bottom: 1px solid lightgray;
+}
+
+tbody tr .qualification {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+tbody tr:first-child .qualification {
+  background-color: lightgreen;
+}
+
+tbody tr:nth-child(2) .qualification,
+tbody tr:nth-child(3) .qualification
+{
+  background-color: lightblue;
+}
+
+tbody tr:nth-child(14) .qualification
+{
+  background-color: orange;
+}
+
+tbody tr:nth-child(15) .qualification,
+tbody tr:nth-child(16) .qualification
+{
+  background-color: red;
 }
