@@ -32,26 +32,35 @@ tbody tr:nth-child(16)
   height: 10px;
   border-radius: 3px;
   display: block;
-  margin: 0 auto;
+  margin-left: 35px;
+}
+
+.qualification-text {
+  font-size: 13px;
+  margin-left: 15px;
 }
 
 tbody tr:first-child .qualification {
   background-color: lightgreen;
+  margin: 0 auto;
 }
 
 tbody tr:nth-child(2) .qualification,
 tbody tr:nth-child(3) .qualification
 {
   background-color: lightblue;
+  margin: 0 auto;
 }
 
 tbody tr:nth-child(14) .qualification
 {
   background-color: orange;
+  margin: 0 auto;
 }
 
 tbody tr:nth-child(15) .qualification,
 tbody tr:nth-child(16) .qualification
 {
   background-color: red;
+  margin: 0 auto;
 }

@@ -37,20 +37,12 @@ export default function TableStanding({ table }: Team[]) {
         <tbody>{rows}</tbody>
       </Table>
 
-      <Grid>
-        <Grid.Col span={3}>
-          <Qualification qualification={"CL-Kval"}></Qualification>
-        </Grid.Col>
-        <Grid.Col span={3}>
-          <Qualification qualification={"ECL-Kval"}></Qualification>
-        </Grid.Col>
-        <Grid.Col span={3}>
-          <Qualification qualification={"Nedflyttnings-Kval"}></Qualification>
-        </Grid.Col>
-        <Grid.Col span={3}>
-          <Qualification qualification={"Nedflyttning"}></Qualification>
-        </Grid.Col>
-      </Grid>
+      <div style={{display: "flex", alignItems: "center"}}>
+        <Qualification qualification={"CL-Kval"} color={"lightgreen"}></Qualification>
+        <Qualification qualification={"ECL-Kval"} color={"lightblue"}></Qualification>
+        <Qualification qualification={"Nedflyttnings-Kval"} color={"orange"}></Qualification>
+        <Qualification qualification={"Nedflyttning"} color={"red"}></Qualification>
+        </div>
     </Container>
   );
 }
