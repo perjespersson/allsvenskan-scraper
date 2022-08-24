@@ -1,6 +1,7 @@
 import { Team } from "types";
 import { fetchTable } from "../lib/parser/table";
-import { Table, Container } from '@mantine/core';
+import { Table, Container, Grid } from '@mantine/core';
+import Qualification from "lib/components/Qualification";
 
 export default function TableStanding({ table }: Team[]) {
   const rows = table.map((team) => (
@@ -36,6 +37,20 @@ export default function TableStanding({ table }: Team[]) {
         <tbody>{rows}</tbody>
       </Table>
 
+      <Grid>
+        <Grid.Col span={3}>
+          <Qualification qualification={"CL-Kval"}></Qualification>
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <Qualification qualification={"ECL-Kval"}></Qualification>
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <Qualification qualification={"Nedflyttnings-Kval"}></Qualification>
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <Qualification qualification={"Nedflyttning"}></Qualification>
+        </Grid.Col>
+      </Grid>
     </Container>
   );
 }
