@@ -10,6 +10,8 @@ export async function fetchGoldTable(url: string) {
   let marathonTeams: GoldTeam[] = [];
 
   $('tr', html).each(function(index: number, element: string) {
+    if (index > 5) return
+
     const position = index.toString()
     const name = $(element).children().eq(0).find('a').text();
     const numberOfGolds = $(element).children().eq(1).text();

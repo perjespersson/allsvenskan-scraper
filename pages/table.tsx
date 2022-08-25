@@ -39,7 +39,7 @@ export default function TableStanding({ table, marathonTable, goldTable }: Team[
   return (
     <Container size="xl">
       <Grid gutter="xl">
-        <Grid.Col xl={9} sm={12}>
+        <Grid.Col xl={8} sm={12}>
           <Table striped fontSize="md" verticalSpacing="sm" style={{borderRadius: "8px", border: "0.5px solid lightgray", padding: "0" }}>
             <thead>
               <tr>
@@ -65,7 +65,7 @@ export default function TableStanding({ table, marathonTable, goldTable }: Team[
           </div>
         </Grid.Col>
 
-        <Grid.Col xl={3} sm={12}>
+        <Grid.Col xl={4} sm={12}>
           <Grid>
             <Grid.Col span={12}>
               <Table striped fontSize="md" verticalSpacing="sm" style={{borderRadius: "8px", border: "0.5px solid lightgray", padding: "0" }}>
