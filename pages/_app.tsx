@@ -1,7 +1,8 @@
 import '@/styles/global.css'
 import type { AppProps } from 'next/app'
-import { Anchor, AppShell, Burger, createStyles, Header, MantineProvider, MediaQuery, Navbar, Autocomplete, Center } from '@mantine/core'
+import { Text, Anchor, AppShell, Burger, createStyles, Header, MantineProvider, MediaQuery, Navbar } from '@mantine/core'
 import { useState } from 'react';
+import Link from 'next/link';
 
 const useStyles = createStyles((theme) => ({
   navbar: {
@@ -13,11 +14,6 @@ const useStyles = createStyles((theme) => ({
   links: {
     [theme.fn.smallerThan("sm")]: {
       display: "none"
-    },
-    [theme.fn.largerThan("sm")]: {
-      display: "flex",
-      alignItems: 'center',
-      height: `${NAV_HEIGHT}px`
     }
   }
 }));
@@ -37,19 +33,33 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <AppShell
         fixed
         header={
-          <Header height={NAV_HEIGHT} style={{alignItems: "center"}}>
-            <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-              <Burger
-                opened={opened}
-                onClick={() => setOpened((o) => !o)}
-                size="md"
-              />
-            </MediaQuery>
+          <Header height={NAV_HEIGHT}>
+            <div style={{display: "flex", width: "90%", maxWidth: "1200px", height: "80px", margin: "0 auto", justifyContent: "space-between", alignItems: "center"}}>
+              <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+                <Text>Allsvenskinator</Text>
+              </MediaQuery>
 
-            <div className={classes.links}>
-              <Anchor>TABELL</Anchor>
-              <Anchor>LAG</Anchor>
-              <Anchor>STATISTIK</Anchor>
+              <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+                <Burger
+                  opened={opened}
+                  onClick={() => setOpened((o) => !o)}
+                  size="md"
+                />
+              </MediaQuery>
+
+              <Text className={classes.links}>Allsvenskinator</Text>
+
+              <div className={classes.links}>
+                  <Link href="/table" passHref>
+                    <Anchor component="a" style={{paddingLeft: "30px"}}>TABELL</Anchor>
+                  </Link>
+                  <Link href="/table" passHref>
+                    <Anchor component="a" style={{paddingLeft: "30px"}}>LAG</Anchor>
+                  </Link>
+                  <Link href="/table" passHref>
+                    <Anchor component="a" style={{paddingLeft: "30px"}}>STATISTIK</Anchor>
+                  </Link>
+              </div>
             </div>
           </Header>
         }
@@ -59,9 +69,15 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             width={{ base: "100%", sm: 0 }}
             hidden={!opened}
           >
-            <Anchor style={{margin: "0 auto", padding: "30px 0"}}>TABELL</Anchor>
-            <Anchor style={{margin: "0 auto", padding: "30px 0"}}>LAG</Anchor>
-            <Anchor style={{margin: "0 auto", padding: "30px 0"}}>STATISTIK</Anchor>
+            <Link href="/table" passHref>
+              <Anchor component="a" style={{paddingLeft: "30px"}}>TABELL</Anchor>
+            </Link>
+            <Link href="/table" passHref>
+              <Anchor component="a" style={{paddingLeft: "30px"}}>LAG</Anchor>
+            </Link>
+            <Link href="/table" passHref>
+              <Anchor component="a" style={{paddingLeft: "30px"}}>STATISTIK</Anchor>
+            </Link>
           </Navbar>
         }
         >
