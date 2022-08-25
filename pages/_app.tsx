@@ -1,6 +1,6 @@
 import '@/styles/global.css'
 import type { AppProps } from 'next/app'
-import { Anchor, AppShell, Burger, createStyles, Header, MantineProvider, MediaQuery, Navbar } from '@mantine/core'
+import { Anchor, AppShell, Burger, createStyles, Header, MantineProvider, MediaQuery, Navbar, Autocomplete, Center } from '@mantine/core'
 import { useState } from 'react';
 
 const useStyles = createStyles((theme) => ({
@@ -13,9 +13,16 @@ const useStyles = createStyles((theme) => ({
   links: {
     [theme.fn.smallerThan("sm")]: {
       display: "none"
+    },
+    [theme.fn.largerThan("sm")]: {
+      display: "flex",
+      alignItems: 'center',
+      height: `${NAV_HEIGHT}px`
     }
   }
 }));
+
+const NAV_HEIGHT = 80;
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { classes } = useStyles();
@@ -29,21 +36,20 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     >
       <AppShell
         fixed
-        navbarOffsetBreakpoint="sm"
         header={
-          <Header height={50}>
+          <Header height={NAV_HEIGHT} style={{alignItems: "center"}}>
             <MediaQuery largerThan="sm" styles={{ display: "none" }}>
               <Burger
                 opened={opened}
                 onClick={() => setOpened((o) => !o)}
-                size="sm"
-                mr="xl"
+                size="md"
               />
             </MediaQuery>
+
             <div className={classes.links}>
-              <Anchor>Home</Anchor>
-              <Anchor>Features</Anchor>
-              <Anchor>Pricing</Anchor>
+              <Anchor>TABELL</Anchor>
+              <Anchor>LAG</Anchor>
+              <Anchor>STATISTIK</Anchor>
             </div>
           </Header>
         }
@@ -53,15 +59,15 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             width={{ base: "100%", sm: 0 }}
             hidden={!opened}
           >
-            <Anchor>Home</Anchor>
-            <Anchor>Features</Anchor>
-            <Anchor>Pricing</Anchor>
+            <Anchor style={{margin: "0 auto", padding: "30px 0"}}>TABELL</Anchor>
+            <Anchor style={{margin: "0 auto", padding: "30px 0"}}>LAG</Anchor>
+            <Anchor style={{margin: "0 auto", padding: "30px 0"}}>STATISTIK</Anchor>
           </Navbar>
         }
         >
 
+        <Component {...pageProps} />
       </AppShell>
-      <Component {...pageProps} />
     </MantineProvider>
   )
 }

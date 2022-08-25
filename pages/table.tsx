@@ -2,7 +2,6 @@ import { Team } from "types";
 import { fetchTable } from "../lib/parser/table";
 import { Table, Container, Grid } from '@mantine/core';
 import Qualification from "lib/components/Qualification";
-import Navigation from "lib/components/Navigation";
 
 export default function TableStanding({ table }: Team[]) {
   const rows = table.map((team) => (
