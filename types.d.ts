@@ -19,12 +19,13 @@ export type Team = {
 export type MarathonTeam = {
   name: string,
   position: string,
-  playedGames: string,
-  wins: string,
-  draws: string,
-  losses: string,
-  goalDifferences: string,
   points: string,
+}
+
+export type GoldTeam = {
+  name: string,
+  position: string,
+  numberOfGolds: string,
 }
 
 export type Player = {
