@@ -34,7 +34,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         fixed
         header={
           <Header height={NAV_HEIGHT} style={{backgroundColor: "rgb(29, 155, 240)"}}>
-            <div style={{display: "flex", width: "90%", maxWidth: "1200px", height: "80px", margin: "0 auto", justifyContent: "space-between", alignItems: "center"}}>
+            <div style={{display: "flex", width: "90%", maxWidth: "1320px", height: "80px", margin: "0 auto", justifyContent: "space-between", alignItems: "center"}}>
               <MediaQuery largerThan="sm" styles={{ display: "none" }}>
                 <Text>Allsvenskinator</Text>
               </MediaQuery>
