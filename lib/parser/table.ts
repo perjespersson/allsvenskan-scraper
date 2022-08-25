@@ -1,5 +1,5 @@
+import { Team } from "types";
 const cheerio = require('cheerio');
-import { Team } from "../types/team";
 
 export async function fetchTable(url: string) {
   const response = await fetch(url);

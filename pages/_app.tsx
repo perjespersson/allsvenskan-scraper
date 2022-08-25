@@ -33,7 +33,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <AppShell
         fixed
         header={
-          <Header height={NAV_HEIGHT}>
+          <Header height={NAV_HEIGHT} style={{backgroundColor: "rgb(29, 155, 240)"}}>
             <div style={{display: "flex", width: "90%", maxWidth: "1200px", height: "80px", margin: "0 auto", justifyContent: "space-between", alignItems: "center"}}>
               <MediaQuery largerThan="sm" styles={{ display: "none" }}>
                 <Text>Allsvenskinator</Text>
@@ -47,17 +47,17 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 />
               </MediaQuery>
 
-              <Text className={classes.links}>Allsvenskinator</Text>
+              <Text className={classes.links} style={{color: "white", fontWeight: "800", fontSize: "20px", letterSpacing: "1px"}}>ALLSVENSKINATOR</Text>
 
               <div className={classes.links}>
                   <Link href="/table" passHref>
-                    <Anchor component="a" style={{paddingLeft: "30px"}}>TABELL</Anchor>
+                    <Anchor component="a" style={{paddingLeft: "30px", color: "white", fontWeight: "600"}}>TABELL</Anchor>
                   </Link>
                   <Link href="/table" passHref>
-                    <Anchor component="a" style={{paddingLeft: "30px"}}>LAG</Anchor>
+                    <Anchor component="a" style={{paddingLeft: "30px", color: "white", fontWeight: "600"}}>LAG</Anchor>
                   </Link>
                   <Link href="/table" passHref>
-                    <Anchor component="a" style={{paddingLeft: "30px"}}>STATISTIK</Anchor>
+                    <Anchor component="a" style={{paddingLeft: "30px", color: "white", fontWeight: "600"}}>STATISTIK</Anchor>
                   </Link>
               </div>
             </div>

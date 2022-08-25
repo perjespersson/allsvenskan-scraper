@@ -1,9 +1,10 @@
 import { Team } from "types";
 import { fetchTable } from "../lib/parser/table";
+import { fetchMarathonTable } from "../lib/parser/marathonTable";
 import { Table, Container, Grid } from '@mantine/core';
 import Qualification from "lib/components/Qualification";
 
-export default function TableStanding({ table }: Team[]) {
+export default function TableStanding({ table, marathonTable }: Team[]) {
   const rows = table.map((team) => (
     <tr key={team.name}>
       <td className="no-border info"><div className="qualification"></div></td>
@@ -18,45 +19,65 @@ export default function TableStanding({ table }: Team[]) {
     </tr>
   ));
 
-  const links = [
-    {link: "google.se", label: "google"},
-    {link: "yahoo.se", label: "yahoo"},
-    {link: "bing.se", label: "bing"},
-  ]
+  const rowsMarathon = marathonTable.map((team) => (
+    <tr key={team.name}>
+      <td className="no-border">{team.position}</td>
+      <td className="no-border">{team.name}</td>
+      <td className="no-border center">{team.points}</td>
+    </tr>
+  ));
 
   return (
-      <Container size="sm" px="sm" style={{ background: "white", borderRadius: "8px", border: "0.5px solid lightgray", padding: "0" }}>
-        <Table striped fontSize="md" verticalSpacing="sm">
-          <thead>
-            <tr>
-              <th></th>
-              <th>#</th>
-              <th> Klubb</th>
-              <th className="center">SM</th>
-              <th className="center">V</th>
-              <th className="center">O</th>
-              <th className="center">F</th>
-              <th className="center">+/-</th>
-              <th className="center">P</th>
-            </tr>
-          </thead>
-          <tbody>{rows}</tbody>
-        </Table>
+    <Container size="xl">
+      <Grid gutter="xl">
+        <Grid.Col xl={9} sm={12}>
+          <Table striped fontSize="md" verticalSpacing="sm" style={{borderRadius: "8px", border: "0.5px solid lightgray", padding: "0" }}>
+            <thead>
+              <tr>
+                <th></th>
+                <th>#</th>
+                <th> Klubb</th>
+                <th className="center">SM</th>
+                <th className="center">V</th>
+                <th className="center">O</th>
+                <th className="center">F</th>
+                <th className="center">+/-</th>
+                <th className="center">P</th>
+              </tr>
+            </thead>
+            <tbody>{rows}</tbody>
+          </Table>
 
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Qualification qualification={"CL-Kval"} color={"lightgreen"}></Qualification>
-          <Qualification qualification={"ECL-Kval"} color={"lightblue"}></Qualification>
-          <Qualification qualification={"Nedflyttnings-Kval"} color={"orange"}></Qualification>
-          <Qualification qualification={"Nedflyttning"} color={"red"}></Qualification>
-        </div>
-      </Container>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Qualification qualification={"CL-Kval"} color={"lightgreen"}></Qualification>
+            <Qualification qualification={"ECL-Kval"} color={"lightblue"}></Qualification>
+            <Qualification qualification={"Nedflyttnings-Kval"} color={"orange"}></Qualification>
+            <Qualification qualification={"Nedflyttning"} color={"red"}></Qualification>
+          </div>
+        </Grid.Col>
+
+        <Grid.Col xl={3} sm={12}>
+          <Table striped fontSize="md" verticalSpacing="sm" style={{borderRadius: "8px", border: "0.5px solid lightgray", padding: "0" }}>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th> Klubb</th>
+                <th className="center">P</th>
+              </tr>
+            </thead>
+            <tbody>{rowsMarathon}</tbody>
+          </Table>
+        </Grid.Col>
+      </Grid>
+    </Container>
   );
 }
 
 export async function getStaticProps() {
   const table = await fetchTable('https://allsvenskan.se/tabell');
+  const marathonTable = await fetchMarathonTable('https://sv.wikipedia.org/w/api.php?action=parse&format=json&page=Fotbollsallsvenskans_maratontabell&section=2&prop=text');
 
   return {
-    props: { table },
+    props: { table, marathonTable },
   };
 }

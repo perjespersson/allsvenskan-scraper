@@ -16,6 +16,17 @@ export type Team = {
   points: string,
 }
 
+export type MarathonTeam = {
+  name: string,
+  position: string,
+  playedGames: string,
+  wins: string,
+  draws: string,
+  losses: string,
+  goalDifferences: string,
+  points: string,
+}
+
 export type Player = {
   name: string,
   position: string,
